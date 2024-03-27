@@ -161,16 +161,19 @@ def modify_task():
             return
 
         else:
-            edit_task = input("""Please select one of the following options:
-                1. Mark the selected task complete
-                2. Edit the task
-                """)
-            if edit_task == "1":
-                task_list[task_selection - 1]['completed'] = True
-
-            elif edit_task == "2":
-                title = input("Please enter the new task: ")
-                task_list[task_selection - 1]['title'] = f"{title}"
+            if ['username'] == curr_user:
+                edit_task = input("""Please select one of the following options:
+                    1. Mark the selected task complete
+                    2. Edit the task
+                    """)
+                if edit_task == "1":
+                    task_list[task_selection - 1]['completed'] = True
+    
+                elif edit_task == "2":
+                    title = input("Please enter the new task: ")
+                    task_list[task_selection - 1]['title'] = f"{title}"
+            else:
+                print("You do not have permission to edit that task.")
 
     # Updates the text file with the edited tasks
     with open("tasks.txt", "w", encoding="utf-8") as task_file:
@@ -361,7 +364,7 @@ for t_str in task_data:
 # If no user.txt file, write one with a default account
 if not os.path.exists("user.txt"):
     with open("user.txt", "w", encoding="utf-8") as default_file:
-        default_file.write("admin;password")
+        default_file.write("admin,password")
 
 # Read in user_data
 with open("user.txt", 'r', encoding="utf-8") as user_file:
