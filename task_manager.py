@@ -376,8 +376,8 @@ for user in user_data:
     username, password = user.split(',')
     username_password[username] = password
 
-logged_in = False
-while not logged_in:
+LOGGED_IN = False
+while not LOGGED_IN:
 
     print("LOGIN")
     curr_user = input("Username: ")
@@ -390,7 +390,7 @@ while not logged_in:
         continue
     else:
         print("Login Successful!")
-        logged_in = True
+        LOGGED_IN = True
 
 
 while True:
