@@ -1,0 +1,10 @@
+admin;Add functionality to task manager;Add additional options and refactor the code;2024-02-15;2024-01-29;Yes
+employee1;New staff onboarding;Mentor the newest member of staff;2024-05-27;2024-02-27;No
+employee1;New staff onboarding;Update the payroll team with the new staff details;2024-03-15;2024-02-27;No
+employee2;Access online training;Register for training courses through the online portal;2024-03-30;2024-02-27;No
+employee1;Generate reports;Generate a report on current office productivity;2024-05-27;2024-02-27;No
+employee3;Away day meeting;Book room and catering for team away day;2024-05-27;2024-02-27;No
+employee3;Diary management;Rearrange the Director's meetings whilst they're away on holiday;2024-02-26;2024-02-27;No
+employee3;Purchase office supplies;Order pens and post it notes for the general supply;2024-05-27;2024-02-27;No
+employee3;New staff onboarding;Set up an introductory meeting between the director and the newest member of staff;2024-05-27;2024-02-27;No
+employee4;Respond to emails;Get inbox to inbox zero;2024-05-27;2024-02-27;No
