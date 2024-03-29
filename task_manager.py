@@ -155,23 +155,37 @@ def modify_task():
     """
     with open("tasks.txt", "r+", encoding="utf-8") as task_file:
         task_menu = """Please enter the number of the task you wish to select:
-                    Otherwise, please input -1 to return to the main menu.\n"""
+            Otherwise, please input -1 to return to the main menu.\n"""
         task_selection = int(input(task_menu))
         if task_selection == -1:
             return
 
         else:
-            if ['username'] == curr_user:
+            if task_list[task_selection - 1]['username'] == curr_user:
                 edit_task = input("""Please select one of the following options:
                     1. Mark the selected task complete
-                    2. Edit the task
+                    2. Edit the task - edit the username
+                    3. Edit the task - edit the due date
                     """)
-                if edit_task == "1":
+                if edit_task == "1" :
                     task_list[task_selection - 1]['completed'] = True
-    
+
                 elif edit_task == "2":
-                    title = input("Please enter the new task: ")
-                    task_list[task_selection - 1]['title'] = f"{title}"
+                    assign_user = input("Please enter the username of the person you want to assign this task to: ")
+                    task_list[task_selection - 1]['username'] = f"{assign_user}"
+
+                elif edit_task == "3":
+                    while True:
+                        try:
+                            new_date = input("Please enter the new due date (YYYY-MM-DD): ")
+                            new_due_date = datetime.strptime(new_date, DATETIME_STRING_FORMAT)
+                            break
+
+                        except ValueError:
+                            print("Invalid datetime format. Please use the format specified")
+
+                    task_list[task_selection - 1]['due_date'] = new_due_date
+
             else:
                 print("You do not have permission to edit that task.")
 
@@ -428,16 +442,16 @@ e - Exit
         # If the user is an admin they can display statistics about
         # the number of users and tasks in the system.
 
-        with open("task_overview.txt", "r", encoding="utf-8") as task_overview_file:
-            task_stats = task_overview_file.read()
+        with open("task_overview.txt", "r", encoding="utf-8") as file_task_overview:
+            task_stats = file_task_overview.read()
             print(task_stats)
 
-        with open("user_overview.txt", "r", encoding="utf-8") as user_overview_file:
-            user_stats = user_overview_file.read()
+        with open("user_overview.txt", "r", encoding="utf-8") as file_user_overview:
+            user_stats = file_user_overview.read()
             print(user_stats)
 
     elif menu == 'e':
         sys.exit('Goodbye!!!')
 
     else:
-        print("You have made a wrong choice, Please Try again")
+        print("You have made a wrong choice. Please try again.")
